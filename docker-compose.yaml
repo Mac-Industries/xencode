@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+    sqlite:
+        build: .
+        ports:
+            - "5432:5432"  # Map a port to access the database if needed
+        volumes:
+            - ./data:/data  # Map a local directory to persist data

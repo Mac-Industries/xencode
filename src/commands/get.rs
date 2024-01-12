@@ -13,13 +13,10 @@ pub fn build_get_command() -> Command {
 }
 
 pub fn handle_get_command(subcmd: &ArgMatches) {
-    if let Some(id) = subcmd.value_of("id") {
+    if let Some(id) = subcmd.get_one::<String>("id") {
         if let Ok(idea) = get_idea(id) {
             println!("Idea {}:", id);
             println!("Description: {}", idea.description);
-            if let Some(content) = idea.content {
-                println!("Content:\n{}", content);
-            }
         } else {
             println!("Idea with ID {} not found.", id);
         }
